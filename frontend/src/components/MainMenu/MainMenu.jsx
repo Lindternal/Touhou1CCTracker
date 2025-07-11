@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ConfigProvider, Tabs, Spin, Alert, Pagination  } from 'antd';
 import classes from './MainMenu.module.css'
-import { CardContainer } from '../CardContainer/CardContainer';
+import { CardContainer } from '../CardContainer/CardContainer.jsx';
 import { RecentCardItem } from '../RecentCardItem/RecentCardItem.jsx';
 import { fetchGames, fetchPagedRecords, fetchRecords } from '../../services/api.jsx';
 
@@ -84,14 +84,16 @@ export function MainMenu() {
           <RecentCardItem key={record.id} record={record} />
         ))}
       </div>
-      <Pagination
-        current={pagination.current}
-        pageSize={pagination.pageSize}
-        total={pagination.total}
-        onChange={(page, pageSize) => setPagination(prev => ({...prev, current: page, pageSize}))}
-        className={classes.pagination}
-        showSizeChanger={false}
-      />
+      {pagination.total > pagination.pageSize && (
+        <Pagination
+          current={pagination.current}
+          pageSize={pagination.pageSize}
+          total={pagination.total}
+          onChange={(page, pageSize) => setPagination(prev => ({...prev, current: page, pageSize}))}
+          className={classes.pagination}
+          showSizeChanger={false}
+        />
+      )}
     </>
   );
 

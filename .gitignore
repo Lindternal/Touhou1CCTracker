@@ -614,4 +614,8 @@ dist-ssr
 *.sln
 *.sw?
 
+#Uploads
+
+backend/uploads/
+
 # End of https://www.toptal.com/developers/gitignore/api/rider,csharp,react,jetbrains,visualstudiocode

@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Space, Typography, Divider } from 'antd';
-import { YoutubeOutlined, TwitchOutlined, GithubOutlined } from '@ant-design/icons';
+import { YoutubeOutlined, TwitchOutlined } from '@ant-design/icons';
 import classes from './Footer.module.css'
 
 const { Footer: AntFooter } = Layout;

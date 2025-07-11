@@ -4,17 +4,6 @@ import { CardItem } from '../CardItem/CardItem';
 import classes from './CardContainer.module.css';
 
 export const CardContainer = ({ title, records = [] }) => {
-  if (!records || records.length === 0) {
-    return (
-      <Card className={classes.cardContainer}>
-        <div className={classes.containerContent}>
-          <h2>{title}</h2>
-          <p>No records available!</p>
-        </div>
-      </Card>
-    );
-  }
-
   return (<Card className={classes.cardContainer}>
     <div className={classes.containerContent}>
       <div className={classes.cardContainerTitle}>
