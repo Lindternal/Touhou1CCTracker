@@ -1,0 +1,81 @@
+.cardContainer {
+  margin: 24px 24px;
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(71, 71, 71);
+}
+
+.containerContent {
+  padding: 16px;
+}
+
+.cardContainerTitle h2 {
+  margin: 0 0 8px 0;
+  color: #dfdfdf;
+  font-size: 1.25rem;
+}
+
+.cardsArea {
+  display: flex;
+  overflow-x: auto;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  gap: 8px;
+}
+
+.cardSlot {
+  min-width: 300px;
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.cardsArea::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cardsArea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.cardsArea::-webkit-scrollbar-thumb {
+  background: rgb(87, 104, 255);
+  border-radius: 3px;
+}
+
+.cardItem {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(211, 211, 211);
+}
+
+.cardContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardText {
+  margin-bottom: 2px;
+  white-space: pre-line;
+}
+
+.cardDivider {
+  margin: 12px 0;
+}
+
+.downloadButton {
+  align-self: flex-start;
+  background-color: rgb(87, 104, 255);
+  color: white;
+}
+
+.actionButton {
+  background-color: rgb(255,0,51);
+  color: white;
+}

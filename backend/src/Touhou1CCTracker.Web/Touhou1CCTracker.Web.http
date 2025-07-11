@@ -1,0 +1,6 @@
+@Touhou1CCTracker.Web_HostAddress = http://localhost:5064
+
+GET {{Touhou1CCTracker.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,9 @@
+.headerText {
+    color: rgb(204, 204, 204);
+    margin: 0px;
+}
+
+.header {
+    background-color: rgb(10, 10, 10);
+    padding: 2ex;
+}

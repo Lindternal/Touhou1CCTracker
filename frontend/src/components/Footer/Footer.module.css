@@ -1,0 +1,43 @@
+.siteFooter {
+  padding: 24px 50px;
+  text-align: center;
+  background: rgb(10, 10, 10);
+  color: rgb(252, 252, 252);
+}
+
+.divider {
+  margin-top: 5px;
+  border-top: 1px solid rgba(138, 138, 138, 0.5);
+}
+
+.footerLinks {
+  margin-bottom: 8px;
+  color: rgb(255, 255, 255);
+}
+
+.footerLinks a {
+  color: rgb(255, 255, 255);
+  transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+  color: #1890ff;
+}
+
+.footerInfo {
+  color: rgb(107, 107, 107);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .siteFooter {
+    padding: 16px;
+  }
+  
+  .footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+}
