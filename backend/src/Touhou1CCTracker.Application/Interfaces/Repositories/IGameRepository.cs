@@ -1,6 +1,6 @@
 using Touhou1CCTracker.Domain.Entities;
 
-namespace Touhou1CCTracker.Domain.Interfaces.Repositories;
+namespace Touhou1CCTracker.Application.Interfaces.Repositories;
 
 public interface IGameRepository
 {

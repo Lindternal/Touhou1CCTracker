@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.18" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
         <PrivateAssets>all</PrivateAssets>
@@ -16,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Touhou1CCTracker.Application\Touhou1CCTracker.Application.csproj" />
       <ProjectReference Include="..\Touhou1CCTracker.Domain\Touhou1CCTracker.Domain.csproj" />
     </ItemGroup>
 

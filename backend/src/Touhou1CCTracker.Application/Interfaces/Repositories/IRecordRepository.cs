@@ -1,7 +1,7 @@
 using Touhou1CCTracker.Domain.Entities;
 using Touhou1CCTracker.Domain.Helpers;
 
-namespace Touhou1CCTracker.Domain.Interfaces.Repositories;
+namespace Touhou1CCTracker.Application.Interfaces.Repositories;
 
 public interface IRecordRepository
 {

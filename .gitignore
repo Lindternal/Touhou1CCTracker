@@ -618,4 +618,8 @@ dist-ssr
 
 backend/uploads/
 
+#Migrations
+
+backend/src/Touhou1CCTracker.Infrastructure/Migrations
+
 # End of https://www.toptal.com/developers/gitignore/api/rider,csharp,react,jetbrains,visualstudiocode

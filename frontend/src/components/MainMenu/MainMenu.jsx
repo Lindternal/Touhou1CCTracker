@@ -5,7 +5,7 @@ import { CardContainer } from '../CardContainer/CardContainer.jsx';
 import { RecentCardItem } from '../RecentCardItem/RecentCardItem.jsx';
 import { fetchGames, fetchPagedRecords, fetchRecords } from '../../services/api.jsx';
 
-export function MainMenu() {
+export function MainMenu({ user }) {
   const [games, setGames] = useState([]);
   const [recordsByGame, setRecordsByGame] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -97,6 +97,16 @@ export function MainMenu() {
     </>
   );
 
+  const adminTab = {
+    key: '3',
+    label: 'Admin Panel',
+    children: (
+      <div className={classes.adminPanel}>
+        <h2>SOMETHING HERE</h2>
+      </div>
+    )
+  };
+
   const items = [
     {
       key: '1',
@@ -125,6 +135,10 @@ export function MainMenu() {
       )
     }
   ];
+
+  if (user && user.role === 'Admin') {
+    items.push(adminTab);
+  }
 
   return(
     <>

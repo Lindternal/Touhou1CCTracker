@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Touhou1CCTracker.Application.Interfaces.Repositories;
 using Touhou1CCTracker.Domain.Entities;
-using Touhou1CCTracker.Domain.Interfaces.Repositories;
 using Touhou1CCTracker.Infrastructure.Data;
 
 namespace Touhou1CCTracker.Infrastructure.Repositories;

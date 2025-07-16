@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Touhou1CCTracker.Application.DTOs.Difficulty;
-using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Services;
 
 namespace Touhou1CCTracker.Web.Controllers;
 
@@ -9,9 +10,10 @@ namespace Touhou1CCTracker.Web.Controllers;
 [Route("[controller]")]
 public class DifficultyController(IDifficultyService difficultyService) : ControllerBase
 {
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     [SwaggerOperation(
-        Summary = "Get all difficulties",
+        Summary = "Get all difficulties [Role = Admin]",
         Description = "Returns all difficulties that exist in database."
         )]
     public async Task<ActionResult<DifficultyResponseDto>> GetAllDifficulties()
@@ -27,9 +29,10 @@ public class DifficultyController(IDifficultyService difficultyService) : Contro
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet("{id:long}")]
     [SwaggerOperation(
-        Summary = "Get difficulty by provided ID",
+        Summary = "Get difficulty by provided ID [Role = Admin]",
         Description = "Returns difficulty by specified ID from database."
         )]
     public async Task<ActionResult<DifficultyResponseDto>> GetDifficultyById(long id)
@@ -45,9 +48,10 @@ public class DifficultyController(IDifficultyService difficultyService) : Contro
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [SwaggerOperation(
-        Summary = "Add difficulty",
+        Summary = "Add difficulty [Role = Admin]",
         Description = "Creates a new difficulty in database by provided name. Returns this difficulty name with ID."
     )]
     public async Task<ActionResult<DifficultyResponseDto>> CreateDifficulty([FromBody] DifficultyCreateOrUpdateDto requestDto)
@@ -63,9 +67,10 @@ public class DifficultyController(IDifficultyService difficultyService) : Contro
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:long}")]
     [SwaggerOperation(
-        Summary = "Edit difficulty name",
+        Summary = "Edit difficulty name [Role = Admin]",
         Description = "Edits the name of the difficulty by provided ID and new name. Returns this difficulty name with id."
     )]
     public async Task<ActionResult<DifficultyResponseDto>> UpdateDifficulty(long id,
@@ -82,9 +87,10 @@ public class DifficultyController(IDifficultyService difficultyService) : Contro
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:long}")]
     [SwaggerOperation(
-        Summary = "Delete difficulty",
+        Summary = "Delete difficulty [Role = Admin]",
         Description = "Deletes the difficulty from database by specified ID. Note: You can't delete difficulty if it has records!"
     )]
     public async Task<ActionResult> DeleteDifficulty(long id)

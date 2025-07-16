@@ -21,4 +21,6 @@ public class Touhou1CCTrackerDbContext(IConfiguration configuration) : DbContext
     public DbSet<ShotType> ShotTypes { get; set; }
     public DbSet<ReplayFile> ReplayFiles { get; set; }
     public DbSet<Record> Records { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Settings> Settings { get; set; }
 }

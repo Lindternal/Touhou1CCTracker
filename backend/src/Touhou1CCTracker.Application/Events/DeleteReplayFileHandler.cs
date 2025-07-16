@@ -1,4 +1,5 @@
 using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Services;
 using Touhou1CCTracker.Domain.Events;
 
 namespace Touhou1CCTracker.Application.Events;
