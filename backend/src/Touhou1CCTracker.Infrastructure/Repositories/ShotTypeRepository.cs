@@ -32,6 +32,7 @@ public class ShotTypeRepository(Touhou1CCTrackerDbContext context) : IShotTypeRe
     {
         return await context.ShotTypes
             .AsNoTracking()
+            .OrderBy(s => s.Id)
             .ToListAsync();
     }
 

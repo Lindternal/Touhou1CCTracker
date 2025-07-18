@@ -8,7 +8,7 @@ public class Touhou1CCTrackerDbContext(IConfiguration configuration) : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-         optionsBuilder.UseNpgsql(configuration.GetConnectionString(nameof(Touhou1CCTrackerDbContext)));
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString(nameof(Touhou1CCTrackerDbContext)));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

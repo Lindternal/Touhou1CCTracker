@@ -21,7 +21,7 @@ public class ShotTypeService(IShotTypeRepository shotTypeRepository, IValidator<
         var shotType = new ShotType
         {
             CharacterName = requestDto.CharacterName.Trim(),
-            ShotName = requestDto.ShotName.Trim()
+            ShotName = requestDto.ShotName?.Trim()
         };
         
         await shotTypeRepository.AddShotTypeAsync(shotType);
@@ -71,7 +71,7 @@ public class ShotTypeService(IShotTypeRepository shotTypeRepository, IValidator<
             throw new Exception($"Shot type \"{requestDto.CharacterName} {requestDto.ShotName}\" already exists!");
         
         shotType.CharacterName = requestDto.CharacterName.Trim();
-        shotType.ShotName = requestDto.ShotName.Trim();
+        shotType.ShotName = requestDto.ShotName?.Trim();
         
         await shotTypeRepository.SaveChangesAsync();
         

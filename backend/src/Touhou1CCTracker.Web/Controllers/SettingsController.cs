@@ -30,7 +30,7 @@ public class SettingsController(ISettingsService settingsService) : ControllerBa
     }
     
     [Authorize(Roles = "Admin")]
-    [HttpPost("settings")]
+    [HttpPut("settings")]
     [SwaggerOperation(
         Summary = "Change settings value [Role = Admin]",
         Description = "Change settings value by provided setting name and new value."

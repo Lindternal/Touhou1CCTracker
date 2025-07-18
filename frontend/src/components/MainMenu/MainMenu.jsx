@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ConfigProvider, Tabs, Spin, Alert, Pagination  } from 'antd';
+import { ConfigProvider, Tabs, Spin, Alert, Pagination, theme  } from 'antd';
 import classes from './MainMenu.module.css'
 import { CardContainer } from '../CardContainer/CardContainer.jsx';
 import { RecentCardItem } from '../RecentCardItem/RecentCardItem.jsx';
 import { fetchGames, fetchPagedRecords, fetchRecords } from '../../services/api.jsx';
+import { AdminPanel } from '../AdminPanel/AdminPanel.jsx';
 
 export function MainMenu({ user }) {
   const [games, setGames] = useState([]);
@@ -70,7 +71,7 @@ export function MainMenu({ user }) {
       {games.filter(game => recordsByGame[game.id]?.length > 0).map(game => (
         <CardContainer
           key = { game.id }
-          title = { game.name }
+          title = { game.gameName }
           records = { recordsByGame[game.id] }
         />
       ))}
@@ -85,14 +86,17 @@ export function MainMenu({ user }) {
         ))}
       </div>
       {pagination.total > pagination.pageSize && (
-        <Pagination
-          current={pagination.current}
-          pageSize={pagination.pageSize}
-          total={pagination.total}
-          onChange={(page, pageSize) => setPagination(prev => ({...prev, current: page, pageSize}))}
-          className={classes.pagination}
-          showSizeChanger={false}
-        />
+        <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
+          <Pagination
+            current={pagination.current}
+            pageSize={pagination.pageSize}
+            total={pagination.total}
+            onChange={(page, pageSize) => setPagination(prev => ({...prev, current: page, pageSize}))}
+            className={classes.pagination}
+            showSizeChanger={false}
+          />
+        </ConfigProvider>
+        
       )}
     </>
   );
@@ -100,11 +104,7 @@ export function MainMenu({ user }) {
   const adminTab = {
     key: '3',
     label: 'Admin Panel',
-    children: (
-      <div className={classes.adminPanel}>
-        <h2>SOMETHING HERE</h2>
-      </div>
-    )
+    children: <AdminPanel />
   };
 
   const items = [

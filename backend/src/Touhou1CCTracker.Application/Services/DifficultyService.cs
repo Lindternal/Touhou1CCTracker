@@ -15,12 +15,12 @@ public class DifficultyService(IDifficultyRepository difficultyRepository, IVali
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
         
-        if (await difficultyRepository.IsExistByNameAsync(requestDto.Name))
-            throw new Exception($"The difficulty \"{requestDto.Name}\" already exists!");
+        if (await difficultyRepository.IsExistByNameAsync(requestDto.DifficultyName))
+            throw new Exception($"The difficulty \"{requestDto.DifficultyName}\" already exists!");
 
         var difficulty = new Difficulty()
         {
-            Name = requestDto.Name.Trim()
+            Name = requestDto.DifficultyName.Trim()
         };
         
         await difficultyRepository.AddDifficultyAsync(difficulty);
@@ -55,11 +55,11 @@ public class DifficultyService(IDifficultyRepository difficultyRepository, IVali
         if (difficulty == null)
             throw new Exception($"Difficulty with id \"{id}\" doesn't exist!");
         
-        if (await difficultyRepository.IsExistByNameAsync(difficultyCreateOrUpdateDto.Name))
-            throw new Exception($"Difficulty with name \"{difficultyCreateOrUpdateDto.Name}\" already exists!");
+        if (await difficultyRepository.IsExistByNameAsync(difficultyCreateOrUpdateDto.DifficultyName))
+            throw new Exception($"Difficulty with name \"{difficultyCreateOrUpdateDto.DifficultyName}\" already exists!");
         
-        if (!string.IsNullOrEmpty(difficultyCreateOrUpdateDto.Name))
-            difficulty.Name = difficultyCreateOrUpdateDto.Name.Trim();
+        if (!string.IsNullOrEmpty(difficultyCreateOrUpdateDto.DifficultyName))
+            difficulty.Name = difficultyCreateOrUpdateDto.DifficultyName.Trim();
         
         await difficultyRepository.SaveChangesAsync();
         
@@ -85,7 +85,7 @@ public class DifficultyService(IDifficultyRepository difficultyRepository, IVali
         return new DifficultyResponseDto()
         {
             Id = difficulty.Id,
-            Name = difficulty.Name
+            DifficultyName = difficulty.Name
         };
     }
 }

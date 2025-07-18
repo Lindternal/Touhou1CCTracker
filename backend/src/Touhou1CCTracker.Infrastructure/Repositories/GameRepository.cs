@@ -32,6 +32,7 @@ public class GameRepository(Touhou1CCTrackerDbContext context) : IGameRepository
     {
         return await context.Games
             .AsNoTracking()
+            .OrderBy(g => g.Id)
             .ToListAsync();
     }
 

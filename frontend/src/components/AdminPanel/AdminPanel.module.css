@@ -1,0 +1,42 @@
+.adminContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tabsContainer {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableActions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.compactTable {
+  width: 100%;
+}
+.compactTable .ant-table-thead > tr > th {
+  padding: 12px 8px !important;
+}
+.compactTable .ant-table-tbody > tr > td {
+  padding: 12px 8px !important;
+}
+
+.addButton {
+  margin-bottom: 16px;
+}
+
+.settingSwitch {
+  margin-bottom: 24px;
+}
+
+.recordsTable {
+  overflow-x: auto;
+}
+.recordsTable .ant-table {
+  min-width: 800px;
+}

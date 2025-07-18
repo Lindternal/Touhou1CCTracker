@@ -32,6 +32,7 @@ public class DifficultyRepository(Touhou1CCTrackerDbContext context) : IDifficul
     {
         return await context.Difficulties
             .AsNoTracking()
+            .OrderBy(d => d.Id)
             .ToListAsync();
     }
 
