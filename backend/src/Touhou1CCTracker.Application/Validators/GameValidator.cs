@@ -7,7 +7,7 @@ public class GameValidator : AbstractValidator<GameCreateOrUpdateDto>
 {
     public GameValidator()
     {
-        RuleFor(g => g.Name)
+        RuleFor(g => g.GameName)
             .NotEmpty().WithMessage("Game name is required!")
             .Length(2, 50).WithMessage("Game name must be between 2 and 50 characters!");
     }

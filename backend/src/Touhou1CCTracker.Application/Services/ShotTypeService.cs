@@ -1,8 +1,9 @@
 using FluentValidation;
 using Touhou1CCTracker.Application.DTOs.ShotType;
 using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Repositories;
+using Touhou1CCTracker.Application.Interfaces.Services;
 using Touhou1CCTracker.Domain.Entities;
-using Touhou1CCTracker.Domain.Interfaces.Repositories;
 
 namespace Touhou1CCTracker.Application.Services;
 
@@ -20,7 +21,7 @@ public class ShotTypeService(IShotTypeRepository shotTypeRepository, IValidator<
         var shotType = new ShotType
         {
             CharacterName = requestDto.CharacterName.Trim(),
-            ShotName = requestDto.ShotName.Trim()
+            ShotName = requestDto.ShotName?.Trim()
         };
         
         await shotTypeRepository.AddShotTypeAsync(shotType);
@@ -70,7 +71,7 @@ public class ShotTypeService(IShotTypeRepository shotTypeRepository, IValidator<
             throw new Exception($"Shot type \"{requestDto.CharacterName} {requestDto.ShotName}\" already exists!");
         
         shotType.CharacterName = requestDto.CharacterName.Trim();
-        shotType.ShotName = requestDto.ShotName.Trim();
+        shotType.ShotName = requestDto.ShotName?.Trim();
         
         await shotTypeRepository.SaveChangesAsync();
         

@@ -1,8 +1,8 @@
 using FluentValidation;
 using Touhou1CCTracker.Application.DTOs.Game;
-using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Repositories;
+using Touhou1CCTracker.Application.Interfaces.Services;
 using Touhou1CCTracker.Domain.Entities;
-using Touhou1CCTracker.Domain.Interfaces.Repositories;
 
 namespace Touhou1CCTracker.Application.Services;
 
@@ -14,12 +14,12 @@ public class GameService(IGameRepository gameRepository, IValidator<GameCreateOr
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        if (await gameRepository.IsExistByNameAsync(requestDto.Name))
-            throw new Exception($"Game with name \"{requestDto.Name}\" already exists!");
+        if (await gameRepository.IsExistByNameAsync(requestDto.GameName))
+            throw new Exception($"Game with name \"{requestDto.GameName}\" already exists!");
 
         var game = new Game
         {
-            Name = requestDto.Name.Trim()
+            Name = requestDto.GameName.Trim()
         };
 
         await gameRepository.AddGameAsync(game);
@@ -53,10 +53,10 @@ public class GameService(IGameRepository gameRepository, IValidator<GameCreateOr
         if (game == null)
             throw new Exception($"Game with id \"{id}\" does not exist!");
         
-        if (await gameRepository.IsExistByNameAsync(gameCreateOrUpdateDto.Name))
-            throw new Exception($"Game with name \"{gameCreateOrUpdateDto.Name}\" already exists!");
+        if (await gameRepository.IsExistByNameAsync(gameCreateOrUpdateDto.GameName))
+            throw new Exception($"Game with name \"{gameCreateOrUpdateDto.GameName}\" already exists!");
         
-        game.Name = gameCreateOrUpdateDto.Name.Trim();
+        game.Name = gameCreateOrUpdateDto.GameName.Trim();
 
         await gameRepository.SaveChangesAsync();
 
@@ -82,7 +82,7 @@ public class GameService(IGameRepository gameRepository, IValidator<GameCreateOr
         return new GameResponseDto
         {
             Id = game.Id,
-            Name = game.Name
+            GameName = game.Name
         };
     }
 }

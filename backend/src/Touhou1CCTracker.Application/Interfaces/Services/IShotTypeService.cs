@@ -1,6 +1,6 @@
 using Touhou1CCTracker.Application.DTOs.ShotType;
 
-namespace Touhou1CCTracker.Application.Interfaces;
+namespace Touhou1CCTracker.Application.Interfaces.Services;
 
 public interface IShotTypeService
 {

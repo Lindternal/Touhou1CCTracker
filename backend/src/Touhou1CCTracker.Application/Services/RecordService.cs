@@ -1,9 +1,10 @@
 using FluentValidation;
 using Touhou1CCTracker.Application.DTOs.Record;
 using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Repositories;
+using Touhou1CCTracker.Application.Interfaces.Services;
 using Touhou1CCTracker.Domain.Entities;
 using Touhou1CCTracker.Domain.Events;
-using Touhou1CCTracker.Domain.Interfaces.Repositories;
 
 namespace Touhou1CCTracker.Application.Services;
 

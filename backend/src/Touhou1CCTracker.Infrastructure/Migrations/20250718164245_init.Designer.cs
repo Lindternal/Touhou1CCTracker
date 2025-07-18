@@ -12,7 +12,7 @@ using Touhou1CCTracker.Infrastructure.Data;
 namespace Touhou1CCTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(Touhou1CCTrackerDbContext))]
-    [Migration("20250711141908_init")]
+    [Migration("20250718164245_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -133,6 +133,30 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
                     b.ToTable("ReplayFiles", (string)null);
                 });
 
+            modelBuilder.Entity("Touhou1CCTracker.Domain.Entities.Settings", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("SettingName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SettingValue")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SettingName")
+                        .IsUnique();
+
+                    b.ToTable("Settings", (string)null);
+                });
+
             modelBuilder.Entity("Touhou1CCTracker.Domain.Entities.ShotType", b =>
                 {
                     b.Property<long>("Id")
@@ -153,6 +177,33 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ShotTypes", (string)null);
+                });
+
+            modelBuilder.Entity("Touhou1CCTracker.Domain.Entities.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("character varying(15)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Touhou1CCTracker.Domain.Entities.Record", b =>

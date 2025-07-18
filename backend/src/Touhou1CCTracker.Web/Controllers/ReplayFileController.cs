@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Touhou1CCTracker.Application.DTOs.ReplayFile;
-using Touhou1CCTracker.Application.Interfaces;
+using Touhou1CCTracker.Application.Interfaces.Services;
 
 namespace Touhou1CCTracker.Web.Controllers;
 
@@ -11,7 +12,7 @@ public class ReplayFileController(IReplayFileService replayFileService) : Contro
 {
     [HttpGet("download/{id:long}")]
     [SwaggerOperation(
-        Summary = "Download replay file by provided record ID",
+        Summary = "Download replay file by provided record ID [Role = Any]",
         Description = "This method is used to download the replay file. Note: You must provide a record ID, not file ID!"
         )]
     public async Task<ActionResult> GetReplayFileByRecordIdAsync(long id)
@@ -26,9 +27,10 @@ public class ReplayFileController(IReplayFileService replayFileService) : Contro
         }
     }
     
+    [Authorize(Roles = "Admin")]
     [HttpPost("upload"), DisableRequestSizeLimit]
     [SwaggerOperation(
-        Summary = "Upload replay file by provided record ID",
+        Summary = "Upload replay file by provided record ID [Role = Admin]",
         Description = "This method uploads replay file by provided record ID. Note: You can't upload file if it's already exists!"
         )]
     public async Task<ActionResult> UploadReplayFile([FromForm] ReplayFileUploadDto uploadFileDto)
@@ -44,9 +46,10 @@ public class ReplayFileController(IReplayFileService replayFileService) : Contro
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("delete/{id:long}")]
     [SwaggerOperation(
-        Summary = "Delete replay file by provided record ID",
+        Summary = "Delete replay file by provided record ID [Role = Admin]",
         Description = "This method deletes file by provided record ID. Note: You must provide a record ID, not file ID!"
         )]
     public async Task<ActionResult> DeleteReplayFileByRecordIdAsync(long id)

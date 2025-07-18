@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Touhou1CCTracker.Application.Interfaces.Repositories;
 using Touhou1CCTracker.Domain.Entities;
-using Touhou1CCTracker.Domain.Interfaces.Repositories;
 using Touhou1CCTracker.Infrastructure.Data;
 
 namespace Touhou1CCTracker.Infrastructure.Repositories;
@@ -32,6 +32,7 @@ public class ShotTypeRepository(Touhou1CCTrackerDbContext context) : IShotTypeRe
     {
         return await context.ShotTypes
             .AsNoTracking()
+            .OrderBy(s => s.Id)
             .ToListAsync();
     }
 

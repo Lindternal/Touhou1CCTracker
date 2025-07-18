@@ -1,6 +1,6 @@
 using Touhou1CCTracker.Application.DTOs.Record;
 
-namespace Touhou1CCTracker.Application.Interfaces;
+namespace Touhou1CCTracker.Application.Interfaces.Services;
 
 public interface IRecordService
 {

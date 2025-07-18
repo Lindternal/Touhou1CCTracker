@@ -39,6 +39,20 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Settings",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    SettingName = table.Column<string>(type: "text", nullable: false),
+                    SettingValue = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShotTypes",
                 columns: table => new
                 {
@@ -50,6 +64,21 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ShotTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Username = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    Role = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +159,18 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
                 table: "ReplayFiles",
                 column: "RecordId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Settings_SettingName",
+                table: "Settings",
+                column: "SettingName",
+                unique: true);
+
+            migrationBuilder.InsertData(
+                table: "Settings",
+                columns: new[] { "SettingName", "SettingValue" },
+                values: new object[] { "IsRegistrationEnabled", "true" }
+            );
         }
 
         /// <inheritdoc />
@@ -137,6 +178,12 @@ namespace Touhou1CCTracker.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ReplayFiles");
+
+            migrationBuilder.DropTable(
+                name: "Settings");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Records");

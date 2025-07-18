@@ -43,3 +43,11 @@
     display: flex;
     justify-content: center;
 }
+
+.adminPanel {
+  padding: 20px;
+  text-align: center;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  margin-top: 20px;
+}
